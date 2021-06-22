@@ -8,15 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Artikel extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'id',
-        'judul',
-        'konten',
-        'kategori_id',
-        'tanggal',
-        'slug',
+    protected $table = 'artikels';
+    // protected $fillable = [
+    //     'id',
+    //     'judul',
+    //     'konten',
+    //     'kategori_id',
+    //     'tanggal',
+    //     'slug',
         
-    ];
+    // ];
     public function kategoriartikel(){
         return hasOne(KategoriArtikel::class, 'id', 'kategori_id');
     }

@@ -25,13 +25,14 @@ Route::post('login', [AuthController::class, 'login'])->name("login");
 Route::resource('kategori', KategoriController::class)->except([
     'create','edit'
 ]);
+Route::resource('artikel', ArtikelController::class)->except([
+    'create','edit'
+]);
 Route::middleware('auth:sanctum')->group(function() {
     Route::resource('kehamilan', DataKehamilanController::class)->except([
         'create','edit'
     ]);
-    Route::resource('artikel', ArtikelController::class)->except([
-        'create','edit'
-    ]);
+   
     Route::resource('hpht', HphtController::class)->except([
         'create','edit'
     ]);

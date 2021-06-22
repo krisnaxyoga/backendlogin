@@ -17,7 +17,7 @@ class KategoriController extends Controller
     */
    public function index()
    {
-       $kategori = Kategori::all();
+       $kategori = KategoriArtikel::all();
        return $this->successResponse(KategoriResource::collection($kategori),'Kategori successfully retrieved');
    }
 
@@ -52,7 +52,7 @@ class KategoriController extends Controller
            return $this->errorResponse('validation error', $validator->errors());
        }
 
-       $kategori = Kategori::create($input);
+       $kategori = KategoriArtikel::create($input);
        return $this->successResponse(new KategoriResource($kategori),'Kategori successfully created');
    }
 
@@ -64,13 +64,13 @@ class KategoriController extends Controller
     */
    public function show($id)
    {
-       $Kategori = Kategori::find($id);
+       $kategori = KategoriArtikel::find($id);
 
-       if(is_null($Kategori)){
+       if(is_null($kategori)){
            return $this->errorResponse('Kategori not found');
        }
       
-       return $this->successResponse(new KategoriResource($Kategori),'Kategori successfully created');
+       return $this->successResponse(new KategoriResource($kategori),'Kategori successfully created');
    }
 
    /**
@@ -105,10 +105,10 @@ class KategoriController extends Controller
            return $this->errorResponse('validation error', $validator->errors());
        }
 
-       $Kategori->kategori = $input['kategori'];
-      $Kategori->save();
+       $kategori->kategori = $input['kategori'];
+      $kategori->save();
 
-   return $this->successResponse(new KategoriResource($Kategori),'Kategori successfully update');
+   return $this->successResponse(new KategoriResource($kategori),'Kategori successfully update');
    }
 
    /**
@@ -119,7 +119,7 @@ class KategoriController extends Controller
     */
    public function destroy($id)
    {
-       $Kategori->delete();
+       $kategori->delete();
        return $this->successResponse([],'Kategori successfully delete');
    }
 }

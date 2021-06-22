@@ -17,8 +17,8 @@ class ParitasController extends Controller
      */
     public function index()
     {
-        $Paritas = Paritas::all();
-        return $this->successResponse(ParitasResource::collection($Paritas),'Paritas successfully retrieved');
+        $paritas = Paritas::all();
+        return $this->successResponse(ParitasResource::collection($paritas),'Paritas successfully retrieved');
     }
 
     /**
@@ -54,8 +54,8 @@ class ParitasController extends Controller
             return $this->errorResponse('validation error', $validator->errors());
         }
 
-        $Paritas = Paritas::create($input);
-        return $this->successResponse(new ParitasResource($Paritas),'Paritas successfully created');
+        $paritas = Paritas::create($input);
+        return $this->successResponse(new ParitasResource($paritas),'Paritas successfully created');
     }
 
     /**
@@ -66,13 +66,13 @@ class ParitasController extends Controller
      */
     public function show($id)
     {
-        $Paritas = Paritas::find($id);
+        $paritas = Paritas::find($id);
 
-        if(is_null($Paritas)){
+        if(is_null($paritas)){
             return $this->errorResponse('Paritas not found');
         }
        
-        return $this->successResponse(new ParitasResource($Paritas),'Paritas successfully created');
+        return $this->successResponse(new ParitasResource($paritas),'Paritas successfully created');
     }
 
     /**
@@ -108,12 +108,12 @@ class ParitasController extends Controller
             return $this->errorResponse('validation error', $validator->errors());
         }
 
-       $Paritas->banyak_lahir = $input['banyak_lahir'];
-       $Paritas->banyak_hidup = $input['banyak_hidup'];
-       $Paritas->banyak_meninggal = $input['banyak_meninggal'];
-       $Paritas->save();
+       $paritas->banyak_lahir = $input['banyak_lahir'];
+       $paritas->banyak_hidup = $input['banyak_hidup'];
+       $paritas->banyak_meninggal = $input['banyak_meninggal'];
+       $paritas->save();
 
-    return $this->successResponse(new ParitasResource($Paritas),'Paritas successfully update');
+    return $this->successResponse(new ParitasResource($paritas),'Paritas successfully update');
     }
 
     /**
@@ -124,7 +124,7 @@ class ParitasController extends Controller
      */
     public function destroy($id)
     {
-        $Paritas->delete();
+        $paritas->delete();
         return $this->successResponse([],'Paritas successfully delete');
     }
 }

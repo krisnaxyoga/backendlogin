@@ -14,6 +14,11 @@ class HphtResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' =>$this->id,
+            'hari_pertama'=>$this->hari_pertama,
+        'hari_terakhir'=>$this->hari_terakhir,
+            
+        ];
     }
 }

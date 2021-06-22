@@ -17,8 +17,8 @@ class HphtController extends Controller
      */
     public function index()
     {
-        $Hpht = Hpht::all();
-        return $this->successResponse(HphtResource::collection($Hpht),'Hpht successfully retrieved');
+        $hpht = Hpht::all();
+        return $this->successResponse(HphtResource::collection($hpht),'Hpht successfully retrieved');
     }
 
     /**
@@ -54,7 +54,7 @@ class HphtController extends Controller
         }
 
         $Hpht = Hpht::create($input);
-        return $this->successResponse(new HphtResource($Hpht),'Hpht successfully created');
+        return $this->successResponse(new HphtResource($hpht),'Hpht successfully created');
     }
 
     /**
@@ -65,13 +65,13 @@ class HphtController extends Controller
      */
     public function show($id)
     {
-        $Hpht = Hpht::find($id);
+        $hpht = Hpht::find($id);
 
-        if(is_null($Hpht)){
+        if(is_null($hpht)){
             return $this->errorResponse('Hpht not found');
         }
        
-        return $this->successResponse(new HphtResource($Hpht),'Hpht successfully created');
+        return $this->successResponse(new HphtResource($hpht),'Hpht successfully created');
     }
 
     /**
@@ -106,11 +106,11 @@ class HphtController extends Controller
             return $this->errorResponse('validation error', $validator->errors());
         }
 
-        $Hpht->banyak_lahir = $input['hari_pertama'];
-        $Hpht->banyak_lahir = $input['hari_terakhir'];
-       $Hpht->save();
+        $hpht->banyak_lahir = $input['hari_pertama'];
+        $hpht->banyak_lahir = $input['hari_terakhir'];
+       $hpht->save();
 
-    return $this->successResponse(new HphtResource($Hpht),'Hpht successfully update');
+    return $this->successResponse(new HphtResource($hpht),'Hpht successfully update');
     }
 
     /**
@@ -121,7 +121,7 @@ class HphtController extends Controller
      */
     public function destroy($id)
     {
-        $Hpht->delete();
+        $hpht->delete();
         return $this->successResponse([],'Hpht successfully delete');
     }
 }
